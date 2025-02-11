@@ -1,0 +1,74 @@
+{
+    "records": [
+        {
+            "timestamp": "2025-02T12:00:00",
+            "date": "2025-02",
+            "reading": 1553,
+            "units_used": 96,
+            "bill": 768
+        },
+        {
+            "timestamp": "2025-01T12:00:00",
+            "date": "2025-01",
+            "reading": 1457,
+            "units_used": 116,
+            "bill": 928
+        },
+        {
+            "timestamp": "2024-12T12:00:00",
+            "date": "2024-12",
+            "reading": 1341,
+            "units_used": 45,
+            "bill": 360
+        },
+        {
+            "timestamp": "2024-11T12:00:00",
+            "date": "2024-11",
+            "reading": 1296,
+            "units_used": 187,
+            "bill": 1496
+        },
+        {
+            "timestamp": "2024-10T12:00:00",
+            "date": "2024-10",
+            "reading": 1109,
+            "units_used": 198,
+            "bill": 1584
+        },
+        {
+            "timestamp": "2024-09T12:00:00",
+            "date": "2024-09",
+            "reading": 911,
+            "units_used": 271,
+            "bill": 2168
+        },
+        {
+            "timestamp": "2024-08T12:00:00",
+            "date": "2024-08",
+            "reading": 640,
+            "units_used": 340,
+            "bill": 2720
+        },
+        {
+            "timestamp": "2024-07T12:00:00",
+            "date": "2024-07",
+            "reading": 300,
+            "units_used": 181,
+            "bill": 1448
+        },
+        {
+            "timestamp": "2024-06T12:00:00",
+            "date": "2024-06",
+            "reading": 119,
+            "units_used": 12,
+            "bill": 96
+        },
+        {
+            "timestamp": "2024-05T12:00:00",
+            "date": "2024-05",
+            "reading": 107,
+            "units_used": 107,
+            "bill": 856
+        }
+    ]
+}

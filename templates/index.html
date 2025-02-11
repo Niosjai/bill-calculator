@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meter Reading Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meter Reading Tracker</h1>
+    
+    <form id="readingForm">
+        <label for="reading">Enter Current Reading:</label>
+        <input type="number" id="reading" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Past Readings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Reading</th>
+                <th>Units Used</th>
+                <th>Bill</th>
+            </tr>
+        </thead>
+        <tbody id="recordsTable"></tbody>
+    </table>
+
+    <script>
+        document.getElementById("readingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let reading = parseFloat(document.getElementById("reading").value);
+
+            fetch("/add_reading", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ current_reading: reading })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Reading Added!\nUnits Used: ${data.units_used}\nBill: ₹${data.bill_amount}`);
+                location.reload();
+            });
+        });
+
+        function loadData() {
+            fetch("/get_data")
+            .then(response => response.json())
+            .then(data => {
+                let table = document.getElementById("recordsTable");
+                table.innerHTML = "";
+                data.records.forEach(record => {
+                    let date = new Date(record.timestamp);
+                    let formattedDate = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+                    let row = `<tr>
+                        <td>${formattedDate}</td>
+                        <td>${record.reading}</td>
+                        <td>${record.units_used}</td>
+                        <td>₹${record.bill}</td>
+                    </tr>`;
+                    table.innerHTML += row;
+                });
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

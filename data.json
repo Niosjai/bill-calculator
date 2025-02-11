@@ -1,0 +1,25 @@
+{
+    "records": [
+        {
+            "timestamp": "2025-02-11T21:35:45.614014",
+            "date": "2025-02",
+            "reading": 1600,
+            "units_used": 100,
+            "bill": 800
+        },
+        {
+            "timestamp": "2025-02-11T21:35:38.274231",
+            "date": "2025-02",
+            "reading": 1500,
+            "units_used": 41,
+            "bill": 328
+        },
+        {
+            "timestamp": "2025-02-11T21:35:34.145482",
+            "date": "2025-02",
+            "reading": 1459,
+            "units_used": 1459,
+            "bill": 11672
+        }
+    ]
+}
